@@ -87,13 +87,13 @@ def viewPhoto(request, pk):
     print(csv.csvfile)
     print(key.keyfile)
     print(tables.tablefile)
-    df = pd.read_csv(csv.csvfile)
+    df = pd.read_csv(csv.csvfile, header= 0, encoding= 'unicode_escape')
     # parsing the DataFrame in json format.
     json_records = df.reset_index().to_json(orient ='records')
     data = []
     data = json.loads(json_records)
     print(data)
-    keydf = pd.read_csv(key.keyfile)
+    keydf = pd.read_csv(key.keyfile, header= 0, encoding= 'unicode_escape')
     # parsing the DataFrame in json format.
     key_json_records = keydf.reset_index().to_json(orient ='records')
     keydata = []
@@ -111,7 +111,7 @@ def viewPhoto(request, pk):
     #one data frame to html conversion
     #tablesdf = pd.read_csv(tables_string)
     #tablesobject = tablesdf.to_html()
-    tablesdf = pd.read_csv(tableli[0])
+    tablesdf = pd.read_csv(tableli[0], header= 0, encoding= 'unicode_escape')
     tablesobject = tablesdf.to_html()
     #multi data frame to html conversion
     #tablevalue = []
